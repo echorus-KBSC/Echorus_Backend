@@ -13,14 +13,11 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from unicodedata import category
 from django.contrib import admin
-from django.urls import path
-
-from database.views import CardListAPI
+from django.urls import path,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('card',CardListAPI.as_view()),
-    path('card/<int:category>',CardListAPI.getCategory)
+    path('card/',include('database.urls')),
+    path('achievement/',include('achievement.urls'))
 ]
