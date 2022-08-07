@@ -13,7 +13,7 @@ def get(self):
     return Response(serializer.data)
 @api_view(['GET'])
 def getCategory(self,category):
-    queryset = Card.objects.get(category=category)
+    queryset = Card.objects.filter(category=category)
     serializer = CardSerializer(queryset,many=True)
     return Response(serializer.data)
 # Create your views here.
