@@ -4,7 +4,7 @@ from django.urls import path
 from .views import helloAPI,get,getCategory
 
 urlpatterns = [
-    path('/hello',helloAPI),
+    path('hello/',helloAPI),
     path('',get),
-    path('/<int:category>',getCategory)
+    path('<int:category>/',getCategory)
 ]

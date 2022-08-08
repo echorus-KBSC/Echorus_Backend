@@ -1,8 +1,6 @@
-from django.shortcuts import render
-from httplib2 import Response
+from rest_framework.response import Response
 from rest_framework.decorators import api_view
-
-from achievement.serializers import AchievementSerializer
+from .serializers import AchievementSerializer
 from .models import Achievement
 # Create your views here.
 
@@ -14,6 +12,6 @@ def getAchievement(self):
 
 @api_view(['GET'])
 def getSuccessCategory(self,category):
-    queryset = Achievement.objects.get(success=category)
+    queryset = Achievement.objects.filter(success=category)
     serializer = AchievementSerializer(queryset,many=True)
     return Response(serializer.data)
