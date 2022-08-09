@@ -1,0 +1,13 @@
+*.log
+*.pot
+*.pyc
+__pycache__/
+db.sqlite3
+image
+Procfile
+requirements.txt
+runtime.txt
+database/migrations
+database/__pycache__
+achievement/migrations
+achievement/__pycache__

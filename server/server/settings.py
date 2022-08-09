@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 import os
 from pathlib import Path
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,12 +20,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-#xogpsh+k=l41o2-vm@4yaws9cy-1307mup8&oz2q6pi*toiw*'
-
+#SECRET_KEY = 'django-insecure-#xogpsh+k=l41o2-vm@4yaws9cy-1307mup8&oz2q6pi*toiw*'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','django-insecure-#xogpsh+k=l41o2-vm@4yaws9cy-1307mup8&oz2q6pi*toiw*')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
+#DEBUG = True
+DEBUG=bool(os.environ.get('DJANGO_DEBUG',True))
+ALLOWED_HOSTS = ['localhost', '127.0.0.1','echorous.herokuapp.com']
 
 
 # Application definition
@@ -44,6 +43,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -123,11 +123,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 IMAGE_URL='/image/'
-IMAGE_ROOT=os.path.join(BASE_DIR,'image')
+IMAGE_ROOT=os.path.join(BASE_DIR,"image")
