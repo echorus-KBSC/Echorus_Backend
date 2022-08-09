@@ -1,8 +1,10 @@
+from distutils.command.upload import upload
+from email.policy import default
 from django.db import models
 
 class Card(models.Model):
     id = models.AutoField(primary_key=True,blank=False,unique=True)
-    image = models.CharField(max_length=1000)
+    image = models.ImageField(default='./image/default_image.jpg')
     title = models.CharField(max_length=100)
     category = models.IntegerField(null=False)
     style=models.IntegerField(null=False)

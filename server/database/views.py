@@ -4,9 +4,6 @@ from .serializers import CardSerializer
 from rest_framework.decorators import api_view
 
 @api_view(['GET'])
-def helloAPI(request):
-    return Response("hello world")
-@api_view(['GET'])
 def get(self):
     queryset = Card.objects.all()
     serializer = CardSerializer(queryset,many=True)

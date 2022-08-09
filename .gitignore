@@ -1,5 +1,5 @@
 server/server/setting.py
-image
+server/image
 server/database/__pycache__
 server/database/migrations
 server/database/__init__.py
