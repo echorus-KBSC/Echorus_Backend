@@ -1,3 +1,4 @@
+from typing import List
 from django.db import models
 
 class User(models.Model):
@@ -19,3 +20,8 @@ class AcheievmentList(models.Model):
     user_id=models.ForeignKey('User',on_delete=models.CASCADE)
     achievement_id=models.IntegerField(null=False)
 # Create your models here.
+
+class UserData:
+    def __init__(self,User,array):
+        self.User = User
+        self.AchievementArray = array

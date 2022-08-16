@@ -11,9 +11,15 @@ def get(self):
     return Response(serializer.data)
 @api_view(['GET'])
 def getCategory(self,category):
-    queryset=Card.objects.filter(category=category)
-    serializer = CardSerializer(queryset,many=True)
-    return Response(serializer.data)
+    try:
+        queryset=Card.objects.filter(category=category)
+    except Card.DoesNotExist:
+        queryset= None
+    if queryset is None:
+        return []
+    else:
+        serializer = CardSerializer(queryset,many=True)
+        return Response(serializer.data)
 @api_view(['GET'])
 def getId(self,id):
     queryset=Card.objects.get(id=id)
