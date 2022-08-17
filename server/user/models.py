@@ -18,6 +18,7 @@ class User(models.Model):
 class AcheievmentList(models.Model):
     id=models.AutoField(primary_key=True)
     user_id=models.ForeignKey('User',on_delete=models.CASCADE)
+    username=models.CharField(null=False,max_length=20)
     achievement_id=models.IntegerField(null=False)
 # Create your models here.
 
