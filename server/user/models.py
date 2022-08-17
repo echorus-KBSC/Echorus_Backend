@@ -1,3 +1,4 @@
+from turtle import title
 from typing import List
 from django.db import models
 
@@ -26,3 +27,8 @@ class UserData:
     def __init__(self,User,array):
         self.User = User
         self.AchievementArray = array
+class AchievementSummary:
+    def __init__(self,name,description,success):
+        self.title=name
+        self.description=description
+        self.success=success

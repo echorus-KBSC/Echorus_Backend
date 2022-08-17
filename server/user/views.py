@@ -1,11 +1,11 @@
 import json
-from re import A
-from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
+
+from achievement.models import Achievement
 from .serializers import achievementListSerializer, userSerializer
-from .models import AcheievmentList, User, UserData
+from .models import AcheievmentList, AchievementSummary, User, UserData
 # Create your views here.
 @api_view(['GET']) # /user
 def getUserInfo(self):
@@ -23,14 +23,19 @@ def getUserInfoByName(self,username):
     else:
         serializer=userSerializer(queryset)
         try:
-            achieveQueryset = AcheievmentList.objects.filter(user_id_id=serializer.data['id'])
+            achieveQueryset = AcheievmentList.objects.filter(user_id=serializer.data['id'])
         except AcheievmentList.DoesNotExist:
             achieveQueryset=None
         if achieveQueryset is None:
             userData = UserData(serializer.data,[])
         else:
             userDataSerializer = achievementListSerializer(achieveQueryset,many=True)
-            userData = UserData(serializer.data,list(userDataSerializer.data))
+            achieveList = []
+            for content in userDataSerializer.data:
+                achievement=Achievement.objects.get(id=content['id'])
+                achievementData = AchievementSummary(achievement.name,achievement.description,achievement.success)
+                achieveList.append(achievementData.__dict__)
+            userData = UserData(serializer.data,achieveList)
         return Response(userData.__dict__)
 @api_view(['POST']) #/user/save
 def saveUserInfo(request):
@@ -61,7 +66,6 @@ def saveUserAchievement(request):
         return Response(status=status.HTTP_404_NOT_FOUND)
     else:
         request.data['user_id']=queryset.id
-        print(request.data)
         achieveSerializer=achievementListSerializer(data=request.data)
         if achieveSerializer.is_valid():
             achieveSerializer.save()

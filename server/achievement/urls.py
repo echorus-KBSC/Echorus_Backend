@@ -1,9 +1,10 @@
 from django.contrib import admin
 from django.urls import path
 
-from .views import getAchievement, getSuccessCategory
+from .views import getAchievement, getAchievementById, getSuccessCategory
 
 urlpatterns = [
     path('',getAchievement),
-    path('<int:category>',getSuccessCategory)
+    path('category/<int:category>',getSuccessCategory),
+    path('<int:id>',getAchievementById)
 ]
