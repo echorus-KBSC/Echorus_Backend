@@ -20,5 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('card/',include('database.urls')),
     path('achievement/',include('achievement.urls')),
-    path('user/',include('user.urls'))
+    path('user/',include('user.urls')),
+    path('auth/',include('authenticate.urls'))
 ]

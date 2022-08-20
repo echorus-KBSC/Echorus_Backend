@@ -1,11 +1,10 @@
-import json
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
 
 from achievement.models import Achievement
 from .serializers import achievementListSerializer, userSerializer
-from .models import AcheievmentList, AchievementSummary, User, UserData
+from .models import AchievementList, AchievementSummary, User, UserData
 # Create your views here.
 @api_view(['GET']) # /user
 def getUserInfo(self):
@@ -23,8 +22,8 @@ def getUserInfoByName(self,username):
     else:
         serializer=userSerializer(queryset)
         try:
-            achieveQueryset = AcheievmentList.objects.filter(user_id=serializer.data['id'])
-        except AcheievmentList.DoesNotExist:
+            achieveQueryset = AchievementList.objects.filter(user_id=serializer.data['id'])
+        except AchievementList.DoesNotExist:
             achieveQueryset=None
         if achieveQueryset is None:
             userData = UserData(serializer.data,[])
@@ -71,7 +70,3 @@ def saveUserAchievement(request):
             achieveSerializer.save()
             return Response(achieveSerializer.data)
     return Response(status=status.HTTP_400_BAD_REQUEST)
-
-            
-
-

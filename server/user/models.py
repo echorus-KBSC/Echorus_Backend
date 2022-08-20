@@ -1,5 +1,3 @@
-from turtle import title
-from typing import List
 from django.db import models
 
 class User(models.Model):
@@ -16,7 +14,7 @@ class User(models.Model):
     year=models.IntegerField(null=2020)
     success = models.IntegerField(null=0) # 0:성공 1:실패 2:진행중
     
-class AcheievmentList(models.Model):
+class AchievementList(models.Model):
     id=models.AutoField(primary_key=True)
     user_id=models.ForeignKey('User',on_delete=models.CASCADE)
     username=models.CharField(null=False,max_length=20)

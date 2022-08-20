@@ -1,6 +1,6 @@
 from this import d
 from rest_framework import serializers
-from .models import AcheievmentList, User
+from .models import AchievementList, User
 
 class userSerializer(serializers.ModelSerializer):  
     class Meta():
@@ -9,5 +9,5 @@ class userSerializer(serializers.ModelSerializer):
         
 class achievementListSerializer(serializers.ModelSerializer):
     class Meta():
-        model=AcheievmentList
+        model=AchievementList
         fields=("user_id","id","achievement_id")
