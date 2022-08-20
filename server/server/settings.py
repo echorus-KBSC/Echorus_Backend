@@ -13,19 +13,23 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from datetime import timedelta
 import os
 from pathlib import Path
+import environ
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+env=environ.Env(DEBUG=(bool,True))
 
-
+environ.Env.read_env(
+    env_file=os.path.join(BASE_DIR,'.env')
+)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 #SECRET_KEY = 'django-insecure-#xogpsh+k=l41o2-vm@4yaws9cy-1307mup8&oz2q6pi*toiw*'
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','django-insecure-#xogpsh+k=l41o2-vm@4yaws9cy-1307mup8&oz2q6pi*toiw*')
+SECRET_KEY = env('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = True
-DEBUG=bool(os.environ.get('DJANGO_DEBUG',True))
+DEBUG=bool(env('DJANGO_DEBUG'))
 ALLOWED_HOSTS = ['localhost', '127.0.0.1','echorous.herokuapp.com']
 
 
@@ -111,11 +115,11 @@ WSGI_APPLICATION = 'server.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'echorous',
-        'USER' : 'sung',
-        'PASSWORD' : 'ccp980924',
-        'HOST' : 'echorous.cyoqsw9yokal.ap-northeast-2.rds.amazonaws.com',
-        'PORT' : '3306',
+        'NAME': env('MYSQL_NAME'),
+        'USER' : env('MYSQL_USER'),
+        'PASSWORD' : env('MYSQL_PASSWORD'),
+        'HOST' : env('MYSQL_HOST'),
+        'PORT' : env('MYSQL_PORT'),
     }
 }
 

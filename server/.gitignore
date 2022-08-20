@@ -1,7 +1,8 @@
+__pycache__
+.env
 *.log
 *.pot
 *.pyc
-__pycache__
 image
 db.sqlite3image
 Procfile
@@ -10,4 +11,7 @@ runtime.txt
 database/migrations
 database/__pycache__
 achievement/migrations
-achievement/__pycache__
+user/migrations
+user/__pycache__
+authenticate/migrations
+authenticate/__pycache__
