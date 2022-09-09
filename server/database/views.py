@@ -6,11 +6,14 @@ from django.db.models import Q
 
 @api_view(['GET'])
 def get(self):
+    result = {}
     queryset = Card.objects.all()
     serializer = CardSerializer(queryset,many=True)
-    return Response(serializer.data)
+    result['Cards']=serializer.data
+    return Response(result)
 @api_view(['GET'])
 def getCategory(self,category):
+    result = {}
     try:
         queryset=Card.objects.filter(category=category)
     except Card.DoesNotExist:
@@ -19,7 +22,8 @@ def getCategory(self,category):
         return []
     else:
         serializer = CardSerializer(queryset,many=True)
-        return Response(serializer.data)
+        result['Cards']=serializer.data
+        return Response(result)
 @api_view(['GET'])
 def getId(self,id):
     queryset=Card.objects.get(id=id)
@@ -27,6 +31,7 @@ def getId(self,id):
     return Response(serializer.data)
 @api_view(['GET'])
 def getKeyword(request):
+    result = {}
     keyword = request.GET.get('word',None)
     option = request.GET.get('opt',None)
     if option == '0':
@@ -36,4 +41,5 @@ def getKeyword(request):
     else:
         queryset=Card.objects.filter(Q(title__contains=keyword) | Q(description__contains=keyword))
     serializer = CardSerializer(queryset,many=True)
-    return Response(serializer.data)
+    result['Cards']=serializer.data
+    return Response(result)
