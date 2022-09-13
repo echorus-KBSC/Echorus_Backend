@@ -1,4 +1,4 @@
-# Echorous Server Api Docs
+# Echorus Server Api Docs
 
 **url : [https://echorous.herokuapp.com](https://echorous.herokuapp.com/)**
 
