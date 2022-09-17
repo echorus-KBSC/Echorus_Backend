@@ -1,27 +1,29 @@
 # Echorus Server
 
 **url : [https://echorous.herokuapp.com](https://echorous.herokuapp.com/)**
-### stack
-<img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white">
-<img src="https://img.shields.io/badge/django-092E20?style=for-the-badge&logo=django&logoColor=white">
+## Stack
+<img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white"> <img src="https://img.shields.io/badge/django-092E20?style=for-the-badge&logo=django&logoColor=white">
 <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
-### overview
+<img src="https://img.shields.io/badge/heroku-430098?style=for-the-badge&logo=heroku&logoColor=white">
+<img src="https://img.shields.io/badge/Amazon RDS-527FFF?style=for-the-badge&logo=Amazon-RDS&logoColor=white">
+
+## Overview
 
 - [**https://echorous.herokuapp.com**](https://echorous.herokuapp.com/)
-    - **/card**
+    - [**/card**](https://github.com/echorus-KBSC/Echorus_Backend/wiki/Card-API-Docs)
         - /
         - /{category}
         - /search?word=””&opt=””
-    - **/achievement**
+    - [**/achievement**](https://github.com/echorus-KBSC/Echorus_Backend/wiki/Achievement-API-Docs)
         - /
         - category/{success}
         - /{id}
-    - **/user**
+    - [**/user**](https://github.com/echorus-KBSC/Echorus_Backend/wiki/User-Information-API-Docs)
         - /search
         - /search/{name}
         - /save
         - /achievement
-    - **/auth**
+    - [**/auth**](https://github.com/echorus-KBSC/Echorus_Backend/wiki/User-Authentication-API-Docs)
         - /register
         - /login
         - /logout
@@ -79,6 +81,8 @@
     	int product
     	int year 
     	int success
+            list AchievementList
+        
     }
     AchievementList{
     	int id
