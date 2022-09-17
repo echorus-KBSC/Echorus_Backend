@@ -95,7 +95,7 @@
     }
 
 ## API Docs
-###카드 관련 API
+### 카드 관련 API
 
 [Card API](https://github.com/echorus-KBSC/Echorus_Backend/wiki/Card-API-Docs)
 ### 업적 관련 API
@@ -107,3 +107,6 @@
 ### 로그인/회원가입 관련 API
 
 [Authentication API](https://github.com/echorus-KBSC/Echorus_Backend/wiki/User-Authentication-API-Docs)
+
+## 배포 과정
+
