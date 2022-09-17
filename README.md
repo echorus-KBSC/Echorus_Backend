@@ -1,7 +1,10 @@
 # Echorus Server
 
 **url : [https://echorous.herokuapp.com](https://echorous.herokuapp.com/)**
-
+### stack
+<img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white">
+<img src="https://img.shields.io/badge/django-092E20?style=for-the-badge&logo=django&logoColor=white">
+<img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
 ### overview
 
 - [**https://echorous.herokuapp.com**](https://echorous.herokuapp.com/)
@@ -109,4 +112,4 @@
 [Authentication API](https://github.com/echorus-KBSC/Echorus_Backend/wiki/User-Authentication-API-Docs)
 
 ## 배포 과정
-
+[Deployment](https://github.com/echorus-KBSC/Echorus_Backend/wiki/Deployment)
